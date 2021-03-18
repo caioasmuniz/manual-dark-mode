@@ -1,0 +1,24 @@
+{
+  "name": "manual-dark-mode",
+  "version": "1.0.0",
+  "description": "Extensao para adicionar dark mode a paginas que nao o suportam nativamente",
+  "main": "index.js",
+  "scripts": {
+    "test": "firebase emulators:start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caioasmuniz/manual-dark-mode.git"
+  },
+  "keywords": [
+    "dark",
+    "mode",
+    "extension"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caioasmuniz/manual-dark-mode/issues"
+  },
+  "homepage": "https://github.com/caioasmuniz/manual-dark-mode#readme"
+}
