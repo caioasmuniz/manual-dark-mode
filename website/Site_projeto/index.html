@@ -2,131 +2,147 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Mode site</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode site</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <!--Barra de navegação -->
-    <nav class="navbar">
-        <div class="barra_nav">
-            <a href="#home" id="barra_logo">Manual Dark Mode</a>
-            <div class="barra_toggle" id="mobile_menu">
-                <span class="barra"></span>
-                <span class="barra"></span>
-                <span class="barra"></span>
-            </div>
-            <ul class="barra_menu">
-                <li class="barra_item">
-                    <a href="#home" class="barra_links" id="home_page">Home</a>
-                </li>                
-                <li class="barra_item">
-                    <a href="#temas" class="barra_links" id="temas_page">Temas</a>
-                </li>
-                <li class="barra_item">
-                    <a href="#sobre" class="barra_links" id="sobre_page">Sobre</a>
-                </li>
-                <li class="barra_btn">
-                    <a href="#baixar" class="button" id="baixar">Baixar</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  <!-- scripts para implementação do firebase -->
+  <script src="/__/firebase/8.3.0/firebase-app.js"></script>
+  <script src="/__/firebase/8.3.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/init.js"></script>
 
-    <!--Home Section-->
-    <div class="homep" id="home">
-        <div class="homep_container">
-            <h1 class="homep_head">Temas Dark Mode para diversos sites</h1>
-            <button class="main_btn"><a href="#">Download</a></button>
-            <button class="main_btn"><a href="#">Login</a></button>
-        </div>
+
+  <!--Barra de navegação -->
+  <nav class="navbar">
+    <div class="barra_nav">
+      <a href="#home" id="barra_logo">Manual Dark Mode</a>
+      <div class="barra_toggle" id="mobile_menu">
+        <span class="barra"></span>
+        <span class="barra"></span>
+        <span class="barra"></span>
+      </div>
+      <ul class="barra_menu">
+        <li class="barra_item">
+          <a href="#home" class="barra_links" id="home_page">Home</a>
+        </li>
+        <li class="barra_item">
+          <a href="#temas" class="barra_links" id="temas_page">Temas</a>
+        </li>
+        <li class="barra_item">
+          <a href="#sobre" class="barra_links" id="sobre_page">Sobre</a>
+        </li>
+        <li class="barra_btn">
+          <a href="#baixar" class="button" id="baixar">Baixar</a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
-    <!--Temas Section-->
-    <div class="temas" id="temas">
-        <h1>Temas da Comunidade</h1>
-        <div class="temas_wrapper">
-            <div class="temas_card">
-                <h2>texto h2</h2>
-                <p>texto p</p>
-                <div class="temas_btn"><button>Get Started</button></div>
-            </div>
-            <div class="temas_card">
-                <h2>texto h2</h2>
-                <p>texto p</p>
-                <div class="temas_btn"><button>Get Started</button></div>
-            </div>
-            <div class="temas_card">
-                <h2>texto h2</h2>
-                <p>texto p</p>
-                <div class="temas_btn"><button>Get Started</button></div>
-            </div>
-            <div class="temas_card">
-                <h2>texto h2</h2>
-                <p>texto p</p>
-                <div class="temas_btn"><button>Get Started</button></div>
-            </div>
-        </div>
+  <!--Home Section-->
+  <div class="homep" id="home">
+    <div class="homep_container">
+      <h1 class="homep_head">Temas Dark Mode para diversos sites</h1>
+      <button class="main_btn"><a href="#">Download</a></button>
+      <button class="main_btn"><a href="#">Login</a></button>
     </div>
+  </div>
 
-    <!--Form Section-->
-    <div class="geral">
-        <div class="formu">
-            <div class="temp">
-                <h1 id = "titulo">Colabore e compartilhe seu tema Dark Mode :D</h1>
-            </div>    
-            <form>                
-                <div class="campo">  
-                    <label for="nome"><strong>Nome</strong></label>
-                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" required>
-                </div>            
-                <div class="campo">
-                    <label for="tema"><strong>Tema</strong></label>
-                    <input type="text" name="tema" id="tema" placeholder="Nome do tema" required>
-                </div>
-                <div class="campo">
-                    <label for="site"><strong>Site</strong></label>
-                    <input type="text" name="site" id="site" placeholder="URL do site" required>
-                </div>
-                
-
-                <div class="campo">
-                    <label for="codigo"><strong>Texto .css</strong></label>
-                    <textarea rows="6" style="width: 26em" id="codigo" name="codigo" placeholder="Cole o texto .css aqui!!"></textarea>
-                </div>
-
-            </form>
-        </div>
-        <div class="botao_ct">
-        <button class="botao" type="submit" onsubmit=""><a href="#">Enviar</a></button>
-        <button class="botao" type="submit" onsubmit=""><a href="#">Login</a></button>
-        </div>
+  <!--Temas Section-->
+  <div class="temas" id="temas">
+    <h1>Temas da Comunidade</h1>
+    <div class="temas_wrapper">
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn"><button>Get Started</button></div>
+      </div>
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn"><button>Get Started</button></div>
+      </div>
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn"><button>Get Started</button></div>
+      </div>
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn"><button>Get Started</button></div>
+      </div>
     </div>
-        
-    <!--Sobre section-->
-    <div class="main" id="sobre">
-        <div class="main_container">
-            <div class="main_img_ct">
-                <div class="main_img_card"><img src="image.png"></div>
-            </div>
-            <div class="main_content">                                
-                <h1>Trabalho Oficina de Integração<br>Manual Dark Mode</h1>
-                <p>A necessidade e a praticidade do acesso à informação em dispositivos móveis criaram o hábito de muitos usuários utilizarem seus dispositivos em ambientes de pouca iluminação, onde o brilho da tela acaba por ofuscar e incomodar os usuários. Com isso, o modo escuro (Dark Mode) começou a se popularizar cada vez mais nos últimos anos. Este modo inverte a paleta de cores de sites e aplicativos para cores mais escuras, reduzindo com isso o brilho gerado pelas telas dos dispositivos. Porém, embora muitos aplicativos recentes possuam um modo escuro como opção, isto não é padronizado para páginas web, principalmente em páginas criadas por indivíduos sem o uso de uma plataforma, como blogspot e wordpress. Sendo assim, através do apoio da comunidade, criamos essa plataforma onde os usuários podem inserir arquivos CSS para aplicar modo escuro em páginas que não ofereçam suporte ou onde as extensões existentesapresentem erros que impossibilitem seu uso.</p>
-            </div>
+  </div>
+
+  <!--Form Section-->
+  <div class="geral">
+    <div class="formu">
+      <div class="temp">
+        <h1 id="titulo">Colabore e compartilhe seu tema Dark Mode :D</h1>
+      </div>
+      <form>
+        <div class="campo">
+          <label for="nome"><strong>Nome</strong></label>
+          <input type="text" name="nome" id="nome" placeholder="Nome Completo" required>
         </div>
-    </div>
+        <div class="campo">
+          <label for="tema"><strong>Tema</strong></label>
+          <input type="text" name="tema" id="tema" placeholder="Nome do tema" required>
+        </div>
+        <div class="campo">
+          <label for="site"><strong>Site</strong></label>
+          <input type="text" name="site" id="site" placeholder="URL do site" required>
+        </div>
 
-    <!-- Footer Section -->
-    <div class="footer__container">
-            <div class="social__media--wrap">                
-                <p class="website__rights">MANUAL DARK MODE 2021</p>                
-            </div>        
-    </div>
 
-    <script src="app.js"></script>
+        <div class="campo">
+          <label for="codigo"><strong>Texto .css</strong></label>
+          <!-- <textarea rows="6" style="width: 26em" id="codigo" name="codigo" -->
+          <textarea rows="6" id="codigo" name="codigo" placeholder="Cole o texto .css aqui!!"></textarea>
+        </div>
+
+      </form>
+    </div>
+    <div class="botao_ct">
+      <button class="botao" type="submit" onsubmit=""><a href="#">Enviar</a></button>
+      <button class="botao" type="submit" onsubmit=""><a href="#">Login</a></button>
+    </div>
+  </div>
+
+  <!--Sobre section-->
+  <div class="main" id="sobre">
+    <div class="main_container">
+      <div class="main_img_ct">
+        <div class="main_img_card"><img style="width: 100%;" src="image.png"></div>
+      </div>
+      <div class="main_content">
+        <h1>Trabalho Oficina de Integração<br>Manual Dark Mode</h1>
+        <p>A necessidade e a praticidade do acesso à informação em dispositivos móveis criaram o hábito de muitos
+          usuários utilizarem seus dispositivos em ambientes de pouca iluminação, onde o brilho da tela acaba por
+          ofuscar e incomodar os usuários. Com isso, o modo escuro (Dark Mode) começou a se popularizar cada vez mais
+          nos últimos anos. Este modo inverte a paleta de cores de sites e aplicativos para cores mais escuras,
+          reduzindo com isso o brilho gerado pelas telas dos dispositivos. Porém, embora muitos aplicativos recentes
+          possuam um modo escuro como opção, isto não é padronizado para páginas web, principalmente em páginas criadas
+          por indivíduos sem o uso de uma plataforma, como blogspot e wordpress. Sendo assim, através do apoio da
+          comunidade, criamos essa plataforma onde os usuários podem inserir arquivos CSS para aplicar modo escuro em
+          páginas que não ofereçam suporte ou onde as extensões existentesapresentem erros que impossibilitem seu uso.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer__container">
+    <div class="social__media--wrap">
+      <p class="website__rights">MANUAL DARK MODE 2021</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 
 </html>
