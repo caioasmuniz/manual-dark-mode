@@ -1,4 +1,5 @@
 # manual-dark-mode
+## Acesse a página em https://manualdarkmode.web.app/
 
 ## Instruções para Setup do ambiente de desenvolvimento
 0. Baixar o Node.js e o npm: https://nodejs.org/en/
