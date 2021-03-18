@@ -1,0 +1,27 @@
+<html>
+<body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDNXv7wSQ4vLZsQCxJqVaZ52T3QBWCMeAk",
+    authDomain: "manual-dark-mode.firebaseapp.com",
+    projectId: "manual-dark-mode",
+    storageBucket: "manual-dark-mode.appspot.com",
+    messagingSenderId: "761427393615",
+    appId: "1:761427393615:web:6ec795d3a5feaeef927e3a",
+    measurementId: "G-3C28B41DYN"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+</body>
+</html>
