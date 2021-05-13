@@ -410,8 +410,8 @@ input, textarea, button {
 
 .main_img_card{
     margin: 0px;
-    height: 200px;
-    width: 500px;
+    /* height: 200px; */
+    /* width: 500px; */
     border-radius: 4px;
     display: flex;
     flex-direction: column;    
@@ -441,10 +441,10 @@ input, textarea, button {
         justify-content: center;
     }
 
-    .main_img_card{
+    /* .main_img_card{
         height: 425px;
         width: 425px;
-    }
+    } */
     .main_content{
         text-align: center;
         margin-bottom: 4rem;
