@@ -1,41 +1,40 @@
 const buttonSet = document.getElementById('set');
 const buttonReset = document.getElementById('reset');
-const firebase = require("firebase");
-const firebaseConfig = require("../../config/firebase_config.json")
-require("firebase/firestore");
-
-firebase.initializeApp(firebaseConfig);
-var db = firebase.firestore();
 
 let cookieVal = { cssCode: 'body{ color: blue; border:5px solid red }' };
 
 function getActiveTab() { return browser.tabs.query({ active: true, currentWindow: true }) }
 
 buttonSet.onclick = (e, ev) => {
-  console.log("after insert css")
   getActiveTab().then((tabs) => {
-    browser.tabs.insertCSS({ allFrames: true, code: cookieVal.cssCode })
-      .then(null, error => console.log(error));
-    browser.cookies.set({
-      url: tabs[0].url,
-      name: "manual-dark-mode",
-      value: JSON.stringify(cookieVal)
-    })
+    browser.runtime.sendMessage({ command: "get-theme", url: tabs[0].url });
+    // browser.tabs.insertCSS({ allFrames: true, code: cookieVal.cssCode })
+    //   .then(null, error => console.log(error));
+    // browser.cookies.set({
+    //   url: tabs[0].url,
+    //   name: "manual-dark-mode",
+    //   value: JSON.stringify(cookieVal)
+    // })
   })
 }
 
 buttonReset.onclick = (e, ev) => {
   getActiveTab().then((tabs) => {
-
-    browser.tabs.removeCSS({ code: cookieVal.cssCode })
-    cookieVal = { cssCode: '' };
-
-    browser.cookies.remove({
+    let removing = browser.cookies.remove({
       url: tabs[0].url,
-      name: "bgpicker"
+      name: "manual-dark-mode"
     })
+    removing.then((cookie) => { browser.tabs.removeCSS({ code: cookie.value.cssCode }) })
   });
 }
+
+//   browser.cookies.set({
+//     url: tabs[0].url,
+//     name: "manual-dark-mode",
+//     value: JSON.stringify(cookieVal)
+//   })
+
+
 
 
 browser.cookies.onChanged.addListener((changeInfo) => {
@@ -44,3 +43,12 @@ browser.cookies.onChanged.addListener((changeInfo) => {
               * Cause: ${changeInfo.cause}\n
               * Removed: ${changeInfo.removed}`);
 });
+
+// db.collection("Library").doc(doc_name.toString()).get({
+//   nome: doc_name,
+//   tema: doc_filter,
+//   url: doc_url,
+//   css: doc.css,
+//   author: author.uid(),
+//   time: firebase.timestamp.now()
+// })

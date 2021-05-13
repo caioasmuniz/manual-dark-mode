@@ -1,7 +1,6 @@
 {
   "hosting": {
-    "site": "manualdarkmode",
-    "public": "./website/Site_projeto",
+    "public": "website",
     "ignore": [
       "firebase.json",
       "**/.*",
