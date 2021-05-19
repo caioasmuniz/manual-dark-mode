@@ -32,15 +32,26 @@ function cookieUpdate() {
   });
 }
 
-function handleMessages(data, sender, response) {
+function domainFromUrl(url) {
+  let domain = (new URL(url));
+  return domain.hostname;
+}
+
+function handleMessages(data, sender) {
   if (data.command === "get-theme") {
-    // db.collection("storage").where("url", "==", data.url).get().then((query) => {
-    db.collection("storage").get()
+    // db.collection("storage").get()
+    //   .then((query) => {
+    db.collection("storage").where("url", "==", domainFromUrl(data.url)).get()
       .then((query) => {
-        query.forEach(doc => { console.log(doc.data) })
+        query.forEach(doc => {
+          let document = doc.data();
+          console.log(document)
+          browser.tabs.insertCSS({ allFrames: true, code: document.css })
+        })
       }).catch(error => console.log(error))
   }
 }
+
 
 // update when the tab is updated
 browser.tabs.onUpdated.addListener(cookieUpdate);
