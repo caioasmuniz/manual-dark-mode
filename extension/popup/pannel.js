@@ -15,6 +15,9 @@ window.onload = (e, ev) => {
       themes.forEach(theme => {
         let themeButton = document.createElement("button")
         themeButton.appendChild(document.createTextNode(theme.nome))
+        let author = document.createElement("p")
+        author.appendChild(document.createTextNode("Por: " + theme.author))
+        themeButton.appendChild(author)
         themeButton.className = "theme-button";
         themeButton.id = theme.id;
         themesData = themes;
