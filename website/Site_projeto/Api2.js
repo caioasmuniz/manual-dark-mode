@@ -16,8 +16,7 @@ function googleProvider() {
   return gprovider;   
 }
 
-function onSignIn(googleUser) {
-  console.log('Google Auth Response', googleUser);
+function onSignIn(googleUser) {  
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
   var unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
     unsubscribe();
