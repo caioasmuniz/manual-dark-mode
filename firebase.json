@@ -1,6 +1,8 @@
 {
   "hosting": {
-    "public": "./website/Site_projeto",
+
+    "public": "./website/Site_projeto",    
+
     "ignore": [
       "firebase.json",
       "**/.*",
