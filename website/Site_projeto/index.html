@@ -20,7 +20,6 @@
   <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"> </script>
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
 
-
   <!-- script para implementação das funções -->
   <script type="text/javascript" src="funcoes_database.js"></script>
   <script src="Api2.js"></script>  
@@ -32,7 +31,8 @@
         console.log('User signed out.');
       });
       document.getElementById("Formdis").style.display = 'none';
-      document.getElementById("Formdis").style.visibility = 'hidden';    
+      document.getElementById("Formdis").style.visibility = 'hidden';
+      document.location.href = "#home";  
     }
   </script>
 
@@ -68,8 +68,6 @@
       <h1 class="homep_head">Temas Dark Mode para diversos sites</h1>
       <button class="main_btn" onclick="downloadExtension();">Download</button>
       <div class="g-signin2" data-onsuccess="onSignIn"></div>
-      <!--<button class="main_btn"><div class="g-signin2" data-onsuccess="onSignIn"></div></button>-->
-      <!-- <button class="main_btn" id="btLogin">Login</button> -->
     </div>
   </div>
 
@@ -80,53 +78,45 @@
         <div class="temp">
           <h1 id="titulo">Colabore e compartilhe seu tema Dark Mode :D</h1>
         </div>
-        <form>             
+        <form>
+          <div class="campo">
+            <label for="site"><strong>Autor</strong></label>
+            <input type="text" name="autor" id="autor" maxlength = "20" placeholder="Nome do autor" required>
+          </div>             
           <div class="campo">
             <label for="site"><strong>Site</strong></label>
-            <input type="text" name="site" id="site" placeholder="URL do site" required>
+            <input type="text" name="site" id="site" maxlength = "256" placeholder="URL do site" required>
           </div>
           <div class="campo">
             <label for="tema"><strong>Tema</strong></label>
-            <input type="text" name="tema" id="tema" placeholder="Nome do tema" required>
+            <input type="text" name="tema" id="tema" maxlength = "20" placeholder="Nome do tema" required>
           </div>
           <div class="campo">
             <label for="codigo"><strong>Texto .css</strong></label>
-            <!-- <textarea rows="6" style="width: 26em" id="codigo" name="codigo" -->
             <textarea rows="6" id="codigo" name="codigo" placeholder="Cole o texto .css aqui!!"></textarea>
           </div>
 
           </form>
       </div>
       <div class="botao_ct">
-        <button class="botao" onclick="insert();">Enviar</button>
+        <button class="botao" onclick="insere();">Enviar</button>
         <button class="botao" onclick="signOut();">Sign Out</button>
       </div>
     </div>
 
-
     <!--Meus Temas Section-->
-    <div class="temas1" id="temas">
+    <div class="temas1" id="temas1">
       <h1>Meus Temas</h1>
       <div class="temas1_wrapper">
         <div class="temas1_card">
-          <h2>texto h2</h2>
-          <p>texto p</p>
-          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+          <h2>Portal UTFPR - Dark Mode</h2>
+          <p>Autor</p>
+          <div class="temas1_btn" onclick="downloadTheme();"><button>Adquirir Tema</button></div>
         </div>
         <div class="temas1_card">
-          <h2>texto h2</h2>
-          <p>texto p</p>
-          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
-        </div>
-        <div class="temas1_card">
-          <h2>texto h2</h2>
-          <p>texto p</p>
-          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
-        </div>
-        <div class="temas1_card">
-          <h2>texto h2</h2>
-          <p>texto p</p>
-          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+          <h2>Moodle - Dark Mode</h2>
+          <p>Autor</p>
+          <div class="temas1_btn" onclick="downloadTheme();"><button>Adquirir Tema</button></div>
         </div>
       </div>
     </div>
@@ -137,24 +127,24 @@
     <h1>Temas da Comunidade</h1>
     <div class="temas_wrapper">
       <div class="temas_card">
-        <h2>texto h2</h2>
-        <p>texto p</p>
-        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        <h2>TEMA</h2>
+        <p>Autor</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Adquirir Tema</button></div>
       </div>
       <div class="temas_card">
-        <h2>texto h2</h2>
-        <p>texto p</p>
-        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        <h2>TEMA</h2>
+        <p>Autor</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Adquirir Tema</button></div>
       </div>
       <div class="temas_card">
-        <h2>texto h2</h2>
-        <p>texto p</p>
-        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        <h2>TEMA</h2>
+        <p>Autor</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Adquirir Tema</button></div>
       </div>
       <div class="temas_card">
-        <h2>texto h2</h2>
-        <p>texto p</p>
-        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        <h2>TEMA</h2>
+        <p>Autor</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Adquirir Tema</button></div>
       </div>
     </div>
   </div>  
