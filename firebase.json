@@ -1,11 +1,16 @@
 {
   "hosting": {
-    "site": "manualdarkmode",
     "public": "./website/Site_projeto",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**"      
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "./website/Site_projeto/index.html"
+      }
     ]
   },
   "emulators": {

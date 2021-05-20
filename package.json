@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/caioasmuniz/manual-dark-mode/issues"
   },
-  "homepage": "https://github.com/caioasmuniz/manual-dark-mode#readme"
+  "homepage": "https://github.com/caioasmuniz/manual-dark-mode#readme",
+  "dependencies": {
+    "firebase": "^8.6.1"
+  }
 }
