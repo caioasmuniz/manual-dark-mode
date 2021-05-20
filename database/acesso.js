@@ -1,19 +1,17 @@
 /* ------------------------ INICIALIZAÇÃO DO FIRESTORE ----------------------- */
+const firebaseConfig = require("../config/firebase-config");
 // Initialize Cloud Firestore through Firebase
-firebase.initializeApp({
-    apiKey: '### FIREBASE API KEY ###',
-    authDomain: '### FIREBASE AUTH DOMAIN ###',
-    projectId: '### CLOUD FIRESTORE PROJECT ID ###'
-});
-    var db = firebase.firestore();
+let require 
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 
-/* ------------------------- AUTENTICAÇÃO DO USUARIO ------------------------- */
 // Pegando dados pelos campos do formulario do site
 var nome_add = document.getElementById('nome');
 var tema_add = document.getElementById('tema');
 var url_add = document.getElementById('site');
 var css_add = document.getElementById('codigo');
 
+/* ------------------------- AUTENTICAÇÃO DO USUARIO ------------------------- */
 // Reconhecendo pedido de criacao de conta 
 function createRequest() {
     // Procedimento de login
@@ -96,4 +94,13 @@ function insere() {
         var errorCode = error.code;
         var errorMessage = error.message;
     })
+}
+
+/* ----------------------- INICIALIZAÇÃO DE VARIÁVEIS ------------------------ */
+// Botões:
+var btn_login = document.getElementById('btn_login');
+var btn_submit = document.getElementById('btn_submit');
+
+function btnTest(){
+    alert('Botao funcionando!');
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   
 {
   "hosting": {
@@ -7,6 +8,23 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+=======
+{
+  "hosting": {
+
+    "public": "./website/Site_projeto",    
+
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"      
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "./website/Site_projeto/index.html"
+      }
+>>>>>>> d2056f60af479971882ccbab746383d3e013420c
     ]
   },
   "emulators": {
@@ -26,4 +44,8 @@
       "enabled": true
     }
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d2056f60af479971882ccbab746383d3e013420c

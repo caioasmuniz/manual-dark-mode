@@ -1,4 +1,3 @@
-  
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -12,9 +11,14 @@
 
 <body>
   <!-- scripts para implementação do firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js%22%3E"></script> 
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js%22%3E"></script>
   <script src="/__/firebase/8.3.0/firebase-app.js"></script>
-  <script src="/__/firebase/8.3.0/firebase-analytics.js"></script>
+  <script src="/__/firebase/auth.js"></script>
   <script src="/__/firebase/init.js"></script>
+
+  <!-- script para implementação das funções -->
+  <script type="text/javascript" src="./functions.js"></script>
 
 
   <!--Barra de navegação -->
@@ -47,8 +51,8 @@
   <div class="homep" id="home">
     <div class="homep_container">
       <h1 class="homep_head">Temas Dark Mode para diversos sites</h1>
-      <button class="main_btn"><a href="#">Download</a></button>
-      <button class="main_btn"><a href="#">Login</a></button>
+      <button class="main_btn" onclick="downloadExtension();">Download</button>
+      <button class="main_btn" onclick="btnTest();">Login</button>
     </div>
   </div>
 
@@ -59,22 +63,22 @@
       <div class="temas_card">
         <h2>texto h2</h2>
         <p>texto p</p>
-        <div class="temas_btn"><button>Get Started</button></div>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
       </div>
       <div class="temas_card">
         <h2>texto h2</h2>
         <p>texto p</p>
-        <div class="temas_btn"><button>Get Started</button></div>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
       </div>
       <div class="temas_card">
         <h2>texto h2</h2>
         <p>texto p</p>
-        <div class="temas_btn"><button>Get Started</button></div>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
       </div>
       <div class="temas_card">
         <h2>texto h2</h2>
         <p>texto p</p>
-        <div class="temas_btn"><button>Get Started</button></div>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
       </div>
     </div>
   </div>
@@ -109,8 +113,8 @@
       </form>
     </div>
     <div class="botao_ct">
-      <button class="botao" type="submit" onsubmit=""><a href="#">Enviar</a></button>
-      <button class="botao" type="submit" onsubmit=""><a href="#">Login</a></button>
+      <button class="botao" onclick="btn_upload();">Enviar</button>
+      <button class="botao" onclick="btnTest();">Login</button>
     </div>
   </div>
 
@@ -145,5 +149,4 @@
 
   <script src="app.js"></script>
 </body>
-
 </html>

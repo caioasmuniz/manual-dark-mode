@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-signin-client_id" content="358791318355-kphv9d1fum617p6du5j2r7v94v95pm6a.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <title>Dark Mode site</title>
+  <link rel="stylesheet" href="styles.css">  
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />
+</head>
+
+<body>
+  <!-- scripts para implementação do firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>  
+  <!--<script src="https://www.gstatic.com/firebasejs/init.js"></script>-->
+  <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-firestore.js"> </script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+
+
+  <!-- script para implementação das funções -->
+  <script type="text/javascript" src="./funcoes_database.js"></script>
+
+  <!--Barra de navegação -->
+  <nav class="navbar">
+    <div class="barra_nav">
+      <a href="#home" id="barra_logo">Manual Dark Mode</a>
+      <div class="barra_toggle" id="mobile_menu">
+        <span class="barra"></span>
+        <span class="barra"></span>
+        <span class="barra"></span>
+      </div>
+      <ul class="barra_menu">
+        <li class="barra_item">
+          <a href="#home" class="barra_links" id="home_page">Home</a>
+        </li>
+        <li class="barra_item">
+          <a href="#temas" class="barra_links" id="temas_page">Temas</a>
+        </li>
+        <li class="barra_item">
+          <a href="#sobre" class="barra_links" id="sobre_page">Sobre</a>
+        </li>
+        <li class="barra_btn">
+          <a href="#baixar" class="button" id="baixar" onclick="downloadExtension();">Download</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--Home Section-->
+  <div class="homep" id="home">
+    <div class="homep_container">
+      <h1 class="homep_head">Temas Dark Mode para diversos sites</h1>
+      <button class="main_btn" onclick="downloadExtension();">Download</button>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <!--<button class="main_btn"><div class="g-signin2" data-onsuccess="onSignIn"></div></button>-->
+      <!-- <button class="main_btn" id="btLogin">Login</button> -->
+    </div>
+  </div>
+
+  <!--Form Section-->
+  <div id="Formdis" style="display: none; visibility: hidden;">
+    <div class="geral">
+      <div class="formu">
+        <div class="temp">
+          <h1 id="titulo">Colabore e compartilhe seu tema Dark Mode :D</h1>
+        </div>
+        <form>             
+          <div class="campo">
+            <label for="site"><strong>Site</strong></label>
+            <input type="text" name="site" id="site" placeholder="URL do site" required>
+          </div>
+          <div class="campo">
+            <label for="tema"><strong>Tema</strong></label>
+            <input type="text" name="tema" id="tema" placeholder="Nome do tema" required>
+          </div>
+          <div class="campo">
+            <label for="codigo"><strong>Texto .css</strong></label>
+            <!-- <textarea rows="6" style="width: 26em" id="codigo" name="codigo" -->
+            <textarea rows="6" id="codigo" name="codigo" placeholder="Cole o texto .css aqui!!"></textarea>
+          </div>
+
+          </form>
+      </div>
+      <div class="botao_ct">
+        <button class="botao" onclick="btnTest();">Enviar</button>
+      </div>
+    </div>
+
+
+    <!--Meus Temas Section-->
+    <div class="temas1" id="temas">
+      <h1>Meus Temas</h1>
+      <div class="temas1_wrapper">
+        <div class="temas1_card">
+          <h2>texto h2</h2>
+          <p>texto p</p>
+          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        </div>
+        <div class="temas1_card">
+          <h2>texto h2</h2>
+          <p>texto p</p>
+          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        </div>
+        <div class="temas1_card">
+          <h2>texto h2</h2>
+          <p>texto p</p>
+          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        </div>
+        <div class="temas1_card">
+          <h2>texto h2</h2>
+          <p>texto p</p>
+          <div class="temas1_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Temas Section-->
+  <div class="temas" id="temas">
+    <h1>Temas da Comunidade</h1>
+    <div class="temas_wrapper">
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+      </div>
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+      </div>
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+      </div>
+      <div class="temas_card">
+        <h2>texto h2</h2>
+        <p>texto p</p>
+        <div class="temas_btn" onclick="downloadTheme();"><button>Get Started</button></div>
+      </div>
+    </div>
+  </div>  
+
+  <!--Sobre section-->
+  <div class="main" id="sobre">
+    <div class="main_container">
+      <div class="main_img_ct">
+        <div class="main_img_card"><img style="width: 100%;" src="image.png"></div>
+      </div>
+      <div class="main_content">
+        <h1>Trabalho Oficina de Integração<br>Manual Dark Mode</h1>
+        <p>Devido ao hábito de muitos usuários utilizarem seus dispositivos em ambientes de pouca iluminação, onde o brilho da tela acaba incomodando os usuários, o modo escuro (Dark Mode)
+          começou a se popularizar cada vez mais nos últimos anos. Porém, embora muitos aplicativos recentes possuam um modo escuro como opção, isto não é padronizado para páginas web,
+          sendo assim, criamos essa plataforma onde os usuários podem inserir arquivos CSS para aplicar modo escuro em páginas que não ofereçam suporte ou onde as extensões existentes apresentem erros que impossibilitem seu uso.</p>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer__container">
+    <div class="social__media--wrap">
+      <p class="website__rights">MANUAL DARK MODE 2021</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="Api2.js"></script>
+</body>
+
+</html>
