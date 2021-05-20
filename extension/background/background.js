@@ -14,6 +14,11 @@ function getActiveTab() {
   return browser.tabs.query({ active: true, currentWindow: true });
 }
 
+function domainFromUrl(url) {
+  let domain = (new URL(url));
+  return domain.origin;
+}
+
 function cookieUpdate() {
   getActiveTab().then((tabs) => {
     //busca por cookie pre-existente
@@ -24,34 +29,29 @@ function cookieUpdate() {
     //se encontra o cookie da extensao, injeta o css na pagina
     gettingCookies.then((cookie) => {
       if (cookie) {
-        var cookieVal = JSON.parse(cookie.value);
-        browser.tabs.insertCSS({ allFrames: true, code: cookieVal.cssCode })
+        browser.tabs.insertCSS({ allFrames: true, code: JSON.parse(cookie.value) })
           .then(null, error => console.log(error));
       }
     });
   });
 }
 
-function domainFromUrl(url) {
-  let domain = (new URL(url));
-  return domain.hostname;
-}
-
-function handleMessages(data, sender) {
+function handleMessages(data, sender, sendResponse) {
   if (data.command === "get-theme") {
-    // db.collection("storage").get()
-    //   .then((query) => {
+    // sendResponse({ response: "response get theme" })
+
+    let document = new Array;
     db.collection("storage").where("url", "==", domainFromUrl(data.url)).get()
       .then((query) => {
         query.forEach(doc => {
-          let document = doc.data();
-          console.log(document)
-          browser.tabs.insertCSS({ allFrames: true, code: document.css })
+          document.push({ ...doc.data(), id: doc.id })
         })
-      }).catch(error => console.log(error))
+        // console.log(document)
+        sendResponse({ response: document })
+      })
+    return true;
   }
 }
-
 
 // update when the tab is updated
 browser.tabs.onUpdated.addListener(cookieUpdate);
@@ -59,3 +59,10 @@ browser.tabs.onUpdated.addListener(cookieUpdate);
 browser.tabs.onActivated.addListener(cookieUpdate);
 
 browser.runtime.onMessage.addListener(handleMessages);
+
+browser.cookies.onChanged.addListener((changeInfo) => {
+  console.log(`Cookie changed:\n
+              * Cookie: ${JSON.stringify(changeInfo.cookie)}\n
+              * Cause: ${changeInfo.cause}\n
+              * Removed: ${changeInfo.removed}`);
+});

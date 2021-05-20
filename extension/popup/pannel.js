@@ -1,64 +1,66 @@
-const buttonSet = document.getElementById('set');
+const buttonSet = document.getElementsByClassName("theme-button");
 const buttonReset = document.getElementById('reset');
+const themeList = document.getElementById('theme-list');
 
-let cookieVal = {
-  cssCode: ' #barra-brasil {  background: #131313;}#header {background-color: #131313;}#sobre {  background: #292727;}body {  background-color: #131313;  color: rgb(190, 185, 185);}#main {background: #131313;}.portletNavigationTree > .portletItem a span,.item-central .link-central {  color: rgb(190, 185, 185);}.portletNavigationTree .portletHeader {  cursor: pointer;  background: #292727 url(../img/portlet-header.gif) no-repeat 96% 0.7em;  background-size: 18px auto;}.portletNavigationTree .portletHeader.ativo {  background: #292727 url(../img/portlet-header-expanded.gif) no-repeat 96%    0.7em;  background-size: 18px auto;}.azul-claro .outstanding-header {  background: #292727;}.verde .outstanding-header {  background: #292727;}.laranja .outstanding-header {  background: #292727;}.azul-claro .outstanding-header .outstanding-title {  background: #292727;}.verde .outstanding-header .outstanding-title {background: #292727;}.laranja .outstanding-header .outstanding-title {background: #292727;}#em-destaque li {  border-right: 1px solid rgb(190, 185, 185);  background-color: #292727;}.azul-claro .outstanding-header .outstanding-title {background: #292727;}.tile p {  color: rgb(190, 185, 185);}.azul-claro .outstanding-header {  background: #292727;}#portal-footer {  background: #131313;}ul.css-tabs li.current {  background-color: #292727;  color: rgb(190, 185, 185);}ul.css-tabs li {  border: 1px solid #292727;  background-color: #292727;  color: rgb(190, 185, 185);}.css-panes .pane {  border: 1px solid #292727;  background-color: #292727;}#footer {  background: #292727;}#doormat-container {background: #292727;}#wrapper #footer .footer-logos {  background: #131313;} '
-};
+let themesData;
 
 function getActiveTab() { return browser.tabs.query({ active: true, currentWindow: true }) }
 
-buttonSet.onclick = (e, ev) => {
-  getActiveTab()
-    .then((tabs) => {
-      let sending = browser.runtime.sendMessage({ command: "get-theme", url: tabs[0].url })
-      sending.then((response) => {
-        console.log("RESPONSE: " + response)
-        // browser.tabs.insertCSS({ allFrames: true, code: cookieVal.cssCode })
-        // browser.cookies.set({
-        //   url: tabs[0].url,
-        //   name: "manual-dark-mode",
-        //   value: JSON.stringify(cookieVal)
-        // })
-      }, (error) => { console.log("ERRO: " + error) })
 
-
-      // browser.tabs.insertCSS({ allFrames: true, code: cookieVal.cssCode })
-      //   .then(null, error => console.log(error));
-
+window.onload = (e, ev) => {
+  getActiveTab().then((tabs) => {
+    let sending = browser.runtime.sendMessage({ command: "get-theme", url: tabs[0].url })
+    sending.then((response) => {
+      let themes = response.response;
+      themes.forEach(theme => {
+        let themeButton = document.createElement("button")
+        themeButton.appendChild(document.createTextNode(theme.nome))
+        themeButton.className = "theme-button";
+        themeButton.id = theme.id;
+        themesData = themes;
+        themeList.appendChild(themeButton)
+      })
     })
+  })
+}
+
+document.onclick = (ev) => {
+  if (ev.target.className == "theme-button") {
+    let themeInfo = themesData.find(val => (ev.target.id == val.id ? val : undefined))
+
+    browser.cookies.set({
+      name: "manual-dark-mode",
+      // url: themeInfo.url,
+      value: JSON.stringify(themeInfo.css),
+      url: themeInfo.url
+    })
+      .then((cookie) => { console.log(cookie) }, (error) => { console.log(error) })
+
+    browser.tabs.insertCSS({ allFrames: true, code: JSON.stringify(themeInfo.css) })
+      .then((cookie) => {
+        browser.tabs.reload()
+      }, error => console.log(error));
+  }
 }
 
 buttonReset.onclick = (e, ev) => {
   getActiveTab().then((tabs) => {
-    let removing = browser.cookies.remove({
+    browser.cookies.get({
       url: tabs[0].url,
       name: "manual-dark-mode"
+    }).then((cookie) => {
+      browser.tabs.removeCSS({ allFrames: true, code: JSON.stringify(cookie.value) })
+        .then(() => {
+          browser.cookies.remove({ url: tabs[0].url, name: "manual-dark-mode" })
+            .then(() => browser.tabs.reload())
+        })
     })
-    removing.then((cookie) => { browser.tabs.removeCSS({ code: cookie.value.cssCode }) })
-  });
+  })
 }
 
-//   browser.cookies.set({
-//     url: tabs[0].url,
-//     name: "manual-dark-mode",
-//     value: JSON.stringify(cookieVal)
-//   })
-
-
-
-
-browser.cookies.onChanged.addListener((changeInfo) => {
-  console.log(`Cookie changed:\n
-              * Cookie: ${JSON.stringify(changeInfo.cookie)}\n
-              * Cause: ${changeInfo.cause}\n
-              * Removed: ${changeInfo.removed}`);
-});
-
-// db.collection("Library").doc(doc_name.toString()).get({
-//   nome: doc_name,
-//   tema: doc_filter,
-//   url: doc_url,
-//   css: doc.css,
-//   author: author.uid(),
-//   time: firebase.timestamp.now()
-// })
+// browser.cookies.onChanged.addListener((changeInfo) => {
+//   console.log(`Cookie changed:\n
+//               * Cookie: ${JSON.stringify(changeInfo.cookie)}\n
+//               * Cause: ${changeInfo.cause}\n
+//               * Removed: ${changeInfo.removed}`);
+// });
