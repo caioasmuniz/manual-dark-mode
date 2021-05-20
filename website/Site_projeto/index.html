@@ -22,7 +22,19 @@
 
 
   <!-- script para implementação das funções -->
-  <script type="text/javascript" src="./funcoes_database.js"></script>
+  <script type="text/javascript" src="funcoes_database.js"></script>
+  <script src="Api2.js"></script>  
+
+  <script>  
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
+      document.getElementById("Formdis").style.display = 'none';
+      document.getElementById("Formdis").style.visibility = 'hidden';    
+    }
+  </script>
 
   <!--Barra de navegação -->
   <nav class="navbar">
@@ -86,7 +98,8 @@
           </form>
       </div>
       <div class="botao_ct">
-        <button class="botao" onclick="btnTest();">Enviar</button>
+        <button class="botao" onclick="insert();">Enviar</button>
+        <button class="botao" onclick="signOut();">Sign Out</button>
       </div>
     </div>
 
@@ -170,7 +183,7 @@
   </div>
 
   <script src="app.js"></script>
-  <script src="Api2.js"></script>
+  
 </body>
 
 </html>

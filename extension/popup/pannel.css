@@ -1,0 +1,47 @@
+#theme-list{
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2px;
+  padding: 2px 0px 2px 0px;
+}
+
+h1, h4 {
+  text-align: center;
+  color: rgb(201, 219, 217);
+  margin: 0;
+}
+
+p{
+  font-size: 10px;
+  margin: 0;
+  text-align: center;
+}
+
+body{
+  background-color: rgb(31, 31, 31);
+}
+
+button{
+  text-align: center;
+  color: rgb(201, 219, 217);
+  background-color: rgb(53, 53, 53);
+  padding: 3px;
+  border: 3px solid rgb(201, 219, 217);
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+button:hover{
+  background-color: rgb(201, 219, 217);
+  color: rgb(53, 53, 53);
+  transition: all 0.2s;
+}
+
+#popup-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  padding: 5px;
+}
