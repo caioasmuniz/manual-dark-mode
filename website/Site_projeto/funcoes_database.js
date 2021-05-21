@@ -14,14 +14,15 @@ var doc_css = document.getElementById("codigo");
 /* ---------------- USER AUTHENTICATION ------------------ */
 // User Only Functions - INSERT
 function insert() {
-    var author = firebase.Auth().currentUser;
+    var doc_name = document.getElementById("nome");
+    var doc_filter = document.getElementById("tema");
+    var doc_url = document.getElementById("url");
+    var doc_css = document.getElementById("codigo");
     return db.collection("Library").doc(doc_name.toString()).set({
         nome: doc_name,
         tema: doc_filter,
         url: doc_url,
-        css: doc.css,
-        author: author.uid(),
-        time: firebase.timestamp.now()
+        css: doc_css,
     })  .then (() => {
         console.log("Arquivo criado com sucesso!");
     }) .catch ((error) => {
