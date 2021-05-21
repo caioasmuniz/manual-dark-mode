@@ -5,18 +5,12 @@ let require
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
-/* ---------------- */
-var doc_name = document.getElementById("nome");
-var doc_filter = document.getElementById("tema");
-var doc_url = document.getElementById("url");
-var doc_css = document.getElementById("codigo");
-
 /* ---------------- USER AUTHENTICATION ------------------ */
 // User Only Functions - INSERT
 function insert() {
-    var doc_name = document.getElementById("nome");
+    var doc_name = document.getElementById("autor");
     var doc_filter = document.getElementById("tema");
-    var doc_url = document.getElementById("url");
+    var doc_url = document.getElementById("site");
     var doc_css = document.getElementById("codigo");
     return db.collection("Library").doc(doc_name.toString()).set({
         nome: doc_name,
