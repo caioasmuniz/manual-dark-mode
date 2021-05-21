@@ -13,29 +13,23 @@ var doc_css = document.getElementById("codigo");
 
 /* ---------------- USER AUTHENTICATION ------------------ */
 // User Only Functions - INSERT
-function insert(doc_name) {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            var author = firebase.Auth().currentUser;
-            return db.collection("Library").doc(doc_name.toString()).set({
-                nome: doc_name,
-                tema: doc_filter,
-                url: doc_url,
-                css: doc.css,
-                author: author.uid(),
-                time: firebase.timestamp.now()
-            })  .then (() => {
-                console.log("Arquivo criado com sucesso!");
-            }) .catch ((error) => {
-                console.log("Erro ao criar o arquivo!");
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                console.log('Codigo do erro: ', +errorCode);
-            })            
-        } else {
-            alert("Usuário não autenticado");
-        }
-    })
+function insert() {
+    var author = firebase.Auth().currentUser;
+    return db.collection("Library").doc(doc_name.toString()).set({
+        nome: doc_name,
+        tema: doc_filter,
+        url: doc_url,
+        css: doc.css,
+        author: author.uid(),
+        time: firebase.timestamp.now()
+    })  .then (() => {
+        console.log("Arquivo criado com sucesso!");
+    }) .catch ((error) => {
+        console.log("Erro ao criar o arquivo!");
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log('Codigo do erro: ', +errorCode);
+    })            
 }
 
 /* ------------------ PUBLIC FUNCTIONS ------------------- */
