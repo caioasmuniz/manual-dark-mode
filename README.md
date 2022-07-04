@@ -1,8 +1,5 @@
 # manual-dark-mode
-<<<<<<< HEAD
 
-# commit test yuzo
-=======
 ## Acesse a página em https://manualdarkmode.web.app/
 
 ## Instruções para Setup do ambiente de desenvolvimento
@@ -19,4 +16,3 @@
 1. Crie um diretorio `config` na raiz do projeto 
 2. Crie um arquivo `firebase-config.json` dentro do diretório `config`
 3. Cole a configuração do seu projeto no firebase nesse arquivo **(apenas a parte entre chaves)** 
->>>>>>> d2056f60af479971882ccbab746383d3e013420c
